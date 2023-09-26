@@ -279,5 +279,11 @@ export const usersInfo = [
     "email": "emma.jackson@example.com",
     "created_at": "2026-04-20T18:22:15.890Z"
   }
-]
+];
 
+export const usersInfoColumns = [
+  {header: "Name", key: "name"},
+  {header: "Phone", key: "phone"},
+  {header: "Email", key: "email"},
+  {header: "Created At", key: "created_at"}
+]

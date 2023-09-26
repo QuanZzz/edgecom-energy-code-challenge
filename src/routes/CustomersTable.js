@@ -1,89 +1,14 @@
-import classnames from 'classnames';
-import { useEffect, useMemo, useState } from "react";
-import MobileTale from "../components/MobileTable"
-import { usersInfo } from "../utils/constants/usersInfo"
-import Pagination from "../components/pagination/Pagination";
 import DataTable from "../components/DataTable";
-import TableHeader from "../components/TableHeader"
-import RowSizeDropdown from "../components/RowSizeDropdown";
-import SearchBar from "../components/SearchBar";
-import { PAGE_SIZE, PHONE, EMAIL_ALPHA_ASC, CREATED_AT_NEW_TO_OLD } from "../utils/constants/constants";
-import SortDropdown from "../components/SortDropdown";
-
-const INITIAL_USERS_INFO = usersInfo;
+import { usersInfo, usersInfoColumns } from "../utils/constants/usersInfo";
+import { ROWS_NUMBERS } from "../utils/constants/constants";
 
 export default function CustomersTable() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(PAGE_SIZE);
-  const [sortBy, setSortBy] = useState(null);
-  const [searchContent, setSearchContent] = useState("");
-  const [displayedUsers, setDisplayedUsers] = useState([]);
-  const [isDark, setIsDark] = useState(false);
-
-  const currentTableData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * pageSize;
-    const lastPageIndex = firstPageIndex + pageSize;
-    return INITIAL_USERS_INFO.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage, pageSize]);
-
-  useEffect(() => {
-    let currentPageUsers = [...displayedUsers];
-
-    if(sortBy === PHONE) {
-      currentPageUsers.sort((a, b) => a.phone.localeCompare(b.phone));
-    }else if(sortBy === EMAIL_ALPHA_ASC) {
-      currentPageUsers.sort((a, b) => a.email.localeCompare(b.email));
-    }else if(sortBy === CREATED_AT_NEW_TO_OLD) {
-      currentPageUsers.sort((a, b) => {
-        const dateA = new Date(a.created_at);
-        const dateB = new Date(b.created_at);
-        return dateA - dateB;
-      });
-    }else {
-      currentPageUsers.sort((a, b) => a.name.localeCompare(b.name));
-    }
-
-    setDisplayedUsers(currentPageUsers);
-  }, [currentTableData, sortBy]);
-
-  useEffect(() => {
-    if(!searchContent.length) {
-      setDisplayedUsers(currentTableData);  
-    }
-
-    const lowercaseSearchContent = searchContent.toLowerCase();
-
-    const filteredResults = [...currentTableData].filter((user) => {
-      return(
-        user.name.toLowerCase().includes(lowercaseSearchContent) || 
-        user.phone.includes(lowercaseSearchContent) ||
-        user.email.toLowerCase().includes(lowercaseSearchContent)
-      )
-    });
-
-    setDisplayedUsers(filteredResults);
-  }, [currentTableData, searchContent]);
-
   return(
-    <div className={classnames("h-screen w-full flex flex-col items-center text-xxl p-4", {
-      "bg-black text-white": isDark
-    })}>
-      <TableHeader label="Customers Information" isDark={isDark} setIsDark={setIsDark} />
-      <div className="pl-3 w-full flex flex-col items-left">
-        <RowSizeDropdown setPageSize={setPageSize} />
-        <SortDropdown setSortBy={setSortBy} />
-        <SearchBar searchContent={searchContent} setSearchContent={setSearchContent} />
-      </div>
-      <MobileTale usersInfo={displayedUsers} isDark={isDark} />
-      <DataTable usersInfo={displayedUsers} setSortBy={setSortBy} isDark={isDark} />
-      <Pagination 
-        className="pagination-bar"
-        isDark={isDark}
-        currentPage={currentPage}
-        totalCount={INITIAL_USERS_INFO.length}
-        pageSize={pageSize}
-        onPageChange={page => setCurrentPage(page)}
-      />
-    </div>
+    <DataTable 
+      header="Customers Information"
+      initialData={usersInfo}
+      columns={usersInfoColumns}
+      rowsSizes={ROWS_NUMBERS}
+    />
   )
 }

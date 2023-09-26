@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { SORT_BY } from '../utils/constants/constants';
 
-const SortDropdown = ({setSortBy}) => {
+const SortDropdown = ({setSortBy, columns}) => {
   return(
     <div className="flex sm:hidden py-1">
       <label htmlFor="sortByDropdown">
@@ -10,12 +9,13 @@ const SortDropdown = ({setSortBy}) => {
       <select
         name="sortBy"
         id="sortByDropdown"
+        className="bg-transparent"
         onChange={(e) => setSortBy(e.target.value)}
       >
         <option value="">Please select an option</option>
-        {SORT_BY?.map((s) => (
-          <option key={s} value={s}>
-            {s}
+        {columns?.map((column) => (
+          <option key={column.key} value={column.key}>
+            {column.header}
           </option>
         ))}
       </select>
@@ -24,7 +24,8 @@ const SortDropdown = ({setSortBy}) => {
 }
 
 SortDropdown.propTypes = {
-  setSortBy: PropTypes.func
+  setSortBy: PropTypes.func,
+  columns: PropTypes.array
 }
 
 export default SortDropdown;

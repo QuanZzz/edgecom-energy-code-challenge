@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { ROWS_NUMBERS } from '../utils/constants/constants';
 
-const RowSizeDropdown = ({setPageSize}) => {
+const RowSizeDropdown = ({rowsSizes, setPageSize}) => {
   return(
     <div className="flex py-1">
       <label htmlFor="rowSizesDropdown">
@@ -11,10 +10,10 @@ const RowSizeDropdown = ({setPageSize}) => {
         name="rowsNumbers"
         id="rowSizesDropdown"
         className="bg-transparent"
-        onChange={(e) => setPageSize(e.target.value)}
+        onChange={(e) => setPageSize(parseInt(e.target.value))}
       >
         <option value="">Please select row number</option>
-        {ROWS_NUMBERS?.map((r) => (
+        {rowsSizes?.map((r) => (
           <option key={r} value={r}>
             {r}
           </option>
@@ -25,6 +24,7 @@ const RowSizeDropdown = ({setPageSize}) => {
 }
 
 RowSizeDropdown.propTypes = {
+  rowsSizes: PropTypes.array,
   setPageSize: PropTypes.func
 }
 

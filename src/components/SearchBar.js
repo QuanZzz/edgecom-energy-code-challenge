@@ -7,7 +7,7 @@ const SearchBar = ({searchContent, setSearchContent}) => {
       <input 
         className="border w-60 pl-1 bg-transparent" 
         type="search" 
-        placeholder="search by email, phone, name" 
+        placeholder="Search for..." 
         value={searchContent} 
         onChange={(e) => setSearchContent(e.target.value)} />
     </div>

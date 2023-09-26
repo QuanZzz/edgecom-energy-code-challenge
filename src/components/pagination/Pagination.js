@@ -6,6 +6,7 @@ import './pagination.scss';
 import PropTypes from 'prop-types';
 
 const Pagination = ({
+  isDark,
   onPageChange,
   totalCount,
   siblingCount = 1,
@@ -39,7 +40,8 @@ const Pagination = ({
     >
       <li
         className={classnames('pagination-item', {
-          disabled: currentPage === 1
+          disabled: currentPage === 1,
+          "bg-white": isDark
         })}
         onClick={onPrevious}
       >
@@ -55,7 +57,8 @@ const Pagination = ({
           <li
             key={pageNumber}
             className={classnames('pagination-item', {
-              selected: pageNumber === currentPage
+              selected: pageNumber === currentPage,
+              "text-white": isDark
             })}
             onClick={() => onPageChange(pageNumber)}
           >
@@ -65,17 +68,20 @@ const Pagination = ({
       })}
       <li
         className={classnames('pagination-item', {
-          disabled: currentPage === lastPage
+          disabled: currentPage === lastPage,
+          "bg-white hover:bg-white": isDark
         })}
         onClick={onNext}
       >
-        <div className="arrow right" />
+        <div className={classnames("arrow right", {
+        })} />
       </li>
     </ul>
   );
 };
 
 Pagination.propTypes = {
+  isDark: PropTypes.bool,
   onPageChange: PropTypes.func,
   totalCount: PropTypes.number,
   siblingCount: PropTypes.number,

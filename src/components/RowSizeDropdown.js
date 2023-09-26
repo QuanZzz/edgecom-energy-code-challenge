@@ -3,13 +3,14 @@ import { ROWS_NUMBERS } from '../utils/constants/constants';
 
 const RowSizeDropdown = ({setPageSize}) => {
   return(
-    <div className="flex">
+    <div className="flex py-1">
       <label htmlFor="rowSizesDropdown">
         Rows number:
       </label>
       <select
         name="rowsNumbers"
         id="rowSizesDropdown"
+        className="bg-transparent"
         onChange={(e) => setPageSize(e.target.value)}
       >
         <option value="">Please select row number</option>

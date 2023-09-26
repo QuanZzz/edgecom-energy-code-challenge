@@ -1,7 +1,8 @@
+import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { PHONE, EMAIL_ALPHA_ASC, CREATED_AT_NEW_TO_OLD, NAME_ALPHA_ASC } from '../utils/constants/constants';
 
-const DataTable = ({usersInfo, setSortBy}) => {
+const DataTable = ({usersInfo, setSortBy, isDark}) => {
   if(!usersInfo) {
     return;
   }
@@ -55,24 +56,29 @@ const DataTable = ({usersInfo, setSortBy}) => {
           });
 
           return(
-            <tr key={u.created_at} className="border-b bg-white text-left">
+            <tr 
+              key={u.created_at} 
+              className={classnames("border-b bg-transparent text-left text-gray-900", {
+                "text-white": isDark
+              })}
+            >
               <td className="sm:w-3/12 pr-8 pl-3 py-3">
-                <div className="font-medium text-gray-900 my-1 font-brand text-base">
+                <div className="font-medium my-1 font-brand text-base">
                   {u.name}
                 </div>
               </td>
               <td className="sm:w-3/12 pr-8 pl-3 py-3">
-                <div className="font-medium text-gray-900 my-1 font-brand text-base">
+                <div className="font-medium my-1 font-brand text-base">
                   {u.phone}
                 </div>
               </td>
               <td className="sm:w-3/12 pr-8 pl-3 py-3">
-                <div className="font-medium text-gray-900 my-1 font-brand text-base">
+                <div className="font-medium my-1 font-brand text-base">
                   {u.email}
                 </div>
               </td>
               <td className="sm:w-3/12 pr-8 pl-3 py-3">
-                <div className="font-medium text-gray-900 my-1 font-brand text-base">
+                <div className="font-medium my-1 font-brand text-base">
                   {formattedDate}
                 </div>
               </td>
@@ -86,7 +92,8 @@ const DataTable = ({usersInfo, setSortBy}) => {
 
 DataTable.propTypes = {
   usersInfo: PropTypes.array,
-  setSortBy: PropTypes.func
+  setSortBy: PropTypes.func,
+  isDark: PropTypes.bool
 }
 
 export default DataTable;

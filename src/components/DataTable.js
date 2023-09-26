@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
+import { PHONE, EMAIL_ALPHA_ASC, CREATED_AT_NEW_TO_OLD, NAME_ALPHA_ASC } from '../utils/constants/constants';
 
-const DataTable = ({usersInfo}) => {
+const DataTable = ({usersInfo, setSortBy}) => {
   if(!usersInfo) {
     return;
   }
@@ -11,22 +12,30 @@ const DataTable = ({usersInfo}) => {
         <tr>
           <th className="sm:w-3/12 p-3 font-bold text-base">
             <span className="inline-flex items-center flex-nowrap">
-              <span className="break-all line-clamp-1">Name</span>
+              <button onClick={() => setSortBy(NAME_ALPHA_ASC)}>
+                <span className="break-all line-clamp-1">Name</span>
+              </button>
             </span>
           </th>
           <th className="sm:w-3/12 p-3 font-bold text-base">
             <span className="inline-flex items-center flex-nowrap">
+              <button onClick={() => setSortBy(PHONE)}>
               <span className="break-all line-clamp-1">Phone</span>
+              </button>
             </span>
           </th>
           <th className="sm:w-3/12 p-3 font-bold text-base">
             <span className="inline-flex items-center flex-nowrap">
-              <span className="break-all line-clamp-1">Email</span>
+              <button onClick={() => setSortBy(EMAIL_ALPHA_ASC)}>
+                <span className="break-all line-clamp-1">Email</span>
+              </button>
             </span>
           </th>
           <th className="sm:w-3/12 p-3 font-bold text-base">
             <span className="inline-flex items-center flex-nowrap">
-              <span className="break-all line-clamp-1">Created At</span>
+              <button onClick={() => setSortBy(CREATED_AT_NEW_TO_OLD)}>
+                <span className="break-all line-clamp-1">Created At</span>
+              </button>
             </span>
           </th>
         </tr>
@@ -76,7 +85,8 @@ const DataTable = ({usersInfo}) => {
 }
 
 DataTable.propTypes = {
-  usersInfo: PropTypes.array
+  usersInfo: PropTypes.array,
+  setSortBy: PropTypes.func
 }
 
 export default DataTable;

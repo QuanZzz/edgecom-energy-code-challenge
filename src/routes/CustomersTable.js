@@ -44,10 +44,12 @@ export default function CustomersTable() {
   return(
     <div className="h-full w-full flex flex-col items-center text-xxl p-4">
       <div className="text-xxl font-brand font-bold">Customers Information</div>
-      <RowSizeDropdown setPageSize={setPageSize}/>
-      <SortDropdown setSortBy={setSortBy} />
+      <div className="pl-3 w-full flex flex-col items-left">
+        <RowSizeDropdown setPageSize={setPageSize} />
+        <SortDropdown setSortBy={setSortBy} />
+      </div>
       <MobileTale usersInfo={displayedUsers} />
-      <DataTable usersInfo={displayedUsers} />
+      <DataTable usersInfo={displayedUsers} setSortBy={setSortBy} />
       <Pagination 
         className="pagination-bar"
         currentPage={currentPage}

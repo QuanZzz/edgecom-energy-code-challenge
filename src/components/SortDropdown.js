@@ -3,7 +3,7 @@ import { SORT_BY } from '../utils/constants/constants';
 
 const SortDropdown = ({setSortBy}) => {
   return(
-    <div className="flex">
+    <div className="flex sm:hidden">
       <label htmlFor="sortByDropdown">
         Sort by:
       </label>

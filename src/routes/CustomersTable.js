@@ -4,6 +4,7 @@ import { usersInfo } from "../utils/constants/usersInfo"
 import Pagination from "../components/pagination/Pagination";
 import DataTable from "../components/DataTable";
 import RowSizeDropdown from "../components/RowSizeDropdown";
+import SearchBar from "../components/SearchBar";
 import { PAGE_SIZE, PHONE, EMAIL_ALPHA_ASC, CREATED_AT_NEW_TO_OLD } from "../utils/constants/constants";
 import SortDropdown from "../components/SortDropdown";
 
@@ -13,7 +14,8 @@ export default function CustomersTable() {
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(PAGE_SIZE);
   const [sortBy, setSortBy] = useState(null);
-  const [displayedUsers, setDisplayedUsers] = useState(null);
+  const [searchContent, setSearchContent] = useState("");
+  const [displayedUsers, setDisplayedUsers] = useState([]);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
@@ -22,7 +24,7 @@ export default function CustomersTable() {
   }, [currentPage, pageSize]);
 
   useEffect(() => {
-    let currentPageUsers = [...currentTableData];
+    let currentPageUsers = [...displayedUsers];
 
     if(sortBy === PHONE) {
       currentPageUsers.sort((a, b) => a.phone.localeCompare(b.phone));
@@ -39,7 +41,25 @@ export default function CustomersTable() {
     }
 
     setDisplayedUsers(currentPageUsers);
-  }, [currentTableData, sortBy])
+  }, [currentTableData, sortBy]);
+
+  useEffect(() => {
+    if(!searchContent.length) {
+      setDisplayedUsers(currentTableData);  
+    }
+
+    const lowercaseSearchContent = searchContent.toLowerCase();
+
+    const filteredResults = [...currentTableData].filter((user) => {
+      return(
+        user.name.toLowerCase().includes(lowercaseSearchContent) || 
+        user.phone.includes(lowercaseSearchContent) ||
+        user.email.toLowerCase().includes(lowercaseSearchContent)
+      )
+    });
+
+    setDisplayedUsers(filteredResults);
+  }, [currentTableData, searchContent]);
 
   return(
     <div className="h-full w-full flex flex-col items-center text-xxl p-4">
@@ -47,6 +67,7 @@ export default function CustomersTable() {
       <div className="pl-3 w-full flex flex-col items-left">
         <RowSizeDropdown setPageSize={setPageSize} />
         <SortDropdown setSortBy={setSortBy} />
+        <SearchBar searchContent={searchContent} setSearchContent={setSearchContent} />
       </div>
       <MobileTale usersInfo={displayedUsers} />
       <DataTable usersInfo={displayedUsers} setSortBy={setSortBy} />

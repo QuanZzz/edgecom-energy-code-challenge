@@ -14,11 +14,11 @@ const DataTable = ({
   header, 
   initialData, 
   columns, 
-  defaultRows = 10, 
+  rows = 10, 
   rowsSizes,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize, setPageSize] = useState(defaultRows);
+  const [pageSize, setPageSize] = useState(rows);
   const [sortBy, setSortBy] = useState(null);
   const [searchContent, setSearchContent] = useState("");
   const [displayedContent, setDisplayedContent] = useState([]);
@@ -68,7 +68,7 @@ const DataTable = ({
         setIsDark={setIsDark} 
       />
       <div className="pl-3 w-full flex flex-col items-left">
-        <RowSizeDropdown setPageSize={setPageSize} rowsSizes={rowsSizes}/>
+        {!!rowsSizes && <RowSizeDropdown setPageSize={setPageSize} rowsSizes={rowsSizes}/>}
         <SortDropdown columns={columns} setSortBy={setSortBy} />
         <SearchBar searchContent={searchContent} setSearchContent={setSearchContent} />
       </div>
@@ -78,12 +78,14 @@ const DataTable = ({
         columns={columns} 
         isDark={isDark}
       />
+
       <DataTableBaseComponent 
         data={displayedContent}
         columns={columns}
         setSortBy={setSortBy}
         isDark={isDark}
       />
+      
       <Pagination 
         className="pagination-bar"
         isDark={isDark}
@@ -101,8 +103,8 @@ DataTable.propTypes = {
   header: PropTypes.string,
   initialData: PropTypes.array,
   columns: PropTypes.array,
-  defaultRows: PropTypes.number,
-  rowsSizes: PropTypes.array
+  rows: PropTypes.number,
+  rowsSizes: PropTypes.array,
 }
 
 export default DataTable;

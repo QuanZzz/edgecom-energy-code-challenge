@@ -18,7 +18,8 @@ const MobileTableBaseComponent = ({data, columns, isDark}) => {
             {columns.map((column) => (
               <div 
                 key={column.key} 
-                className="font-medium my-1 font-bold font-brand text-base"
+                className={classnames("font-medium my-1 font-bold font-brand text-base", 
+                column.columnClassname)}
               >
                 {row[column.key]}
               </div>

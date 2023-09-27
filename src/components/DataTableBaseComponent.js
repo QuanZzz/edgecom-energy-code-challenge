@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-const DataTableBaseComponent = ({data, columns, setSortBy, isDark}) => {
+const DataTableBaseComponent = ({ data, columns, setSortBy, isDark}) => {
   if(!data) {
     return;
   }
@@ -11,7 +11,10 @@ const DataTableBaseComponent = ({data, columns, setSortBy, isDark}) => {
       <thead className="text-left">
         <tr>
           {columns.map((column) => (
-            <th key={column.key} className="p-3 font-bold text-base">
+            <th 
+              key={column.key} 
+              className={classnames("p-3 font-bold text-base", column.columnClassname)}
+            >
               <span className="inline-flex items-center flex-nowrap">
                 <button onClick={() => setSortBy(column.key)}>
                   <span className="break-all line-clamp-1">{column.header}</span>
@@ -30,7 +33,10 @@ const DataTableBaseComponent = ({data, columns, setSortBy, isDark}) => {
               })}
             >
               {columns.map((column) => (
-                <td key={column.key} className="sm:w-3/12 pr-8 pl-3 py-3">
+                <td 
+                  key={column.key}
+                  className={classnames("sm:w-3/12 pr-8 pl-3 py-3", column.columnClassname)}
+                >
                   <div className="font-medium my-1 font-brand text-base">
                     {row[column.key]}
                   </div>

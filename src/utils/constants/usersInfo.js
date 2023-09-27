@@ -282,8 +282,22 @@ export const usersInfo = [
 ];
 
 export const usersInfoColumns = [
-  {header: "Name", key: "name"},
-  {header: "Phone", key: "phone"},
-  {header: "Email", key: "email"},
-  {header: "Created At", key: "created_at"}
+  {
+    header: "Name", 
+    key: "name", 
+    columnClassname: "bg-cyan-500 italic"
+  },
+  {
+    header: "Phone", 
+    key: "phone"
+  },
+  {
+    header: "Email", 
+    key: "email", 
+    columnClassname: "bg-cyan-500 underline hover:text-blue-500 cursor-pointer hover:italic"
+  },
+  {
+    header: "Created At", 
+    key: "created_at"
+  }
 ]

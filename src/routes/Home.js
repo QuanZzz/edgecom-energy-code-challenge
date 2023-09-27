@@ -7,13 +7,13 @@ export default function Home() {
         className="font-bold font-brand underline hover:text-blue-600" 
         to="/customer-table"
       >
-        Customers Information Table Example
+        Customized Columns Table Example
       </Link>
       <Link 
         className="font-bold font-brand underline pt-5 hover:text-blue-600" 
         to="/crypto-table"
       >
-        Crypto Information Table Example
+        Set 5 Rows Per Page Table
       </Link>
     </div>
   )

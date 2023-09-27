@@ -7,7 +7,6 @@ export default function CryptosTable() {
       header="Crypto Prices"
       initialData={cryptosInfo}
       columns={cryptosInfoColumns}
-      // rowsSizes={CRYPTO_TABLE_ROWS_NUMBERS}
       rows={5}
     />
   )

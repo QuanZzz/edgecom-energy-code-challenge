@@ -1,6 +1,11 @@
 // For desktop and mobile table components
 export const PAGE_SIZE = 10;
-export const ROWS_NUMBERS = [5, 10, 20];
+
+// For the customers information table example
+export const CUSTOMERS_TABLE_ROWS_NUMBERS = [5, 10, 20];
+
+// For the crypto information table example
+export const CRYPTO_TABLE_ROWS_NUMBERS = [5, 10, 15, 20, 25];
 
 // For pagination
 export const DOTS = '...';

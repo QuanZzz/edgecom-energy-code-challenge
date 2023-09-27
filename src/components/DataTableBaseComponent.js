@@ -11,7 +11,7 @@ const DataTableBaseComponent = ({data, columns, setSortBy, isDark}) => {
       <thead className="text-left">
         <tr>
           {columns.map((column) => (
-            <th key={column.key} className="sm:w-3/12 p-3 font-bold text-base">
+            <th key={column.key} className="p-3 font-bold text-base">
               <span className="inline-flex items-center flex-nowrap">
                 <button onClick={() => setSortBy(column.key)}>
                   <span className="break-all line-clamp-1">{column.header}</span>

@@ -7,7 +7,7 @@ const MobileTableBaseComponent = ({data, columns, isDark}) => {
   }
 
   return (
-    <div className="max-w-sm sm:hidden bg-transparent my-4">
+    <div className="max-w-md w-full sm:hidden bg-transparent my-4">
       {data.map((row, rowIndex) => (
           <div 
             key={rowIndex} 

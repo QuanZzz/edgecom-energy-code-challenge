@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 const SortDropdown = ({className, setSortBy, columns}) => {
   return(
@@ -28,6 +28,12 @@ SortDropdown.propTypes = {
   className: PropTypes.string,
   setSortBy: PropTypes.func,
   columns: PropTypes.array
+}
+
+SortDropdown.defaultProps = {
+  className: "",
+  setSortBy: () => {},
+  columns: null
 }
 
 export default SortDropdown;

@@ -4,8 +4,8 @@ import { CUSTOMERS_TABLE_ROWS_NUMBERS } from "../utils/constants/constants";
 
 export default function CustomersTable() {
   return(
-    <div className="h-full">
-      <DataTable 
+    <div>
+      <DataTable
         header="Customers Information"
         initialData={usersInfo}
         columns={usersInfoColumns}

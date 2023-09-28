@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 const DataTableBaseComponent = ({ className, data, columns, setSortBy, isDark}) => {
   if(!data) {
@@ -55,6 +55,14 @@ DataTableBaseComponent.propTypes = {
   columns: PropTypes.array,
   setSortBy: PropTypes.func,
   isDark: PropTypes.bool
+}
+
+DataTableBaseComponent.defalutProps = {
+  className: "",
+  data: null,
+  columns: null,
+  setSortBy: () => {},
+  isDark: false
 }
 
 export default DataTableBaseComponent;

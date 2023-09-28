@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 const DarkModeCheckbox = ({className, isDark, setIsDark}) => {
   return (
@@ -19,6 +19,12 @@ DarkModeCheckbox.propTypes = {
   className: PropTypes.string,
   isDark: PropTypes.bool,
   setIsDark: PropTypes.func
+}
+
+DarkModeCheckbox.defaultProps = {
+  className: "",
+  isDark: false,
+  setIsDark: () => {}
 }
 
 export default DarkModeCheckbox;

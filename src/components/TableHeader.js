@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import DarkModeCheckbox from './DarkModeCheckbox';
+import PropTypes from "prop-types";
+import cx from "classnames";
+import DarkModeCheckbox from "./DarkModeCheckbox";
 
 const TableHeader = ({className, label, isDark, setIsDark}) => {
   return (
@@ -16,6 +16,13 @@ TableHeader.propTypes = {
   label: PropTypes.string,
   isDark: PropTypes.bool,
   setIsDark: PropTypes.func
+}
+
+TableHeader.defaultProps = {
+  className: "",
+  label: "",
+  isDark: false,
+  setIsDark: () => {}
 }
 
 export default TableHeader;

@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import PropTypes from "prop-types";
+import cx from "classnames";
 import { useEffect, useMemo, useState } from "react";
 import Pagination from "../components/pagination/Pagination";
 import MobileTableBaseComponent from "../components/MobileTableBaseComponent";
-import DataTableBaseComponent from '../components/DataTableBaseComponent';
+import DataTableBaseComponent from "../components/DataTableBaseComponent";
 import TableHeader from "../components/TableHeader";
 import RowSizeDropdown from "../components/RowSizeDropdown";
 import SearchBar from "../components/SearchBar";
@@ -14,7 +14,7 @@ const DataTable = ({
   header, 
   initialData, 
   columns, 
-  rows = 10, 
+  rows, 
   rowsSizes,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -58,7 +58,7 @@ const DataTable = ({
   }, [currentTableData, searchContent]);
 
   return(
-    <div className={cx("w-full flex flex-col items-center text-xxl p-4", {
+    <div className={cx("h-full w-full flex flex-col items-center text-xxl p-4", {
       "bg-black text-white": isDark,
       className
     })}>
@@ -105,6 +105,15 @@ DataTable.propTypes = {
   columns: PropTypes.array,
   rows: PropTypes.number,
   rowsSizes: PropTypes.array,
+}
+
+DataTable.defaultProps = {
+  className: "",
+  header: "",
+  initialData: null,
+  columns: null,
+  rows: 10,
+  rowsSizes: null
 }
 
 export default DataTable;

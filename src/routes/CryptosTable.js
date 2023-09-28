@@ -3,7 +3,7 @@ import { cryptosInfo, cryptosInfoColumns } from "../utils/constants/cryptosInfo"
 
 export default function CryptosTable() {
   return (
-    <div className="h-full">
+    <div>
       <DataTable
         header="Crypto Prices"
         initialData={cryptosInfo}

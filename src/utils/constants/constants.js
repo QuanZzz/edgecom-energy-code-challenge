@@ -8,7 +8,7 @@ export const CUSTOMERS_TABLE_ROWS_NUMBERS = [5, 10, 20];
 export const CRYPTO_TABLE_ROWS_NUMBERS = [5, 10, 15, 20, 25];
 
 // For pagination
-export const DOTS = '...';
+export const DOTS = "...";
 
 // For sorting component
 export const NAME_ALPHA_ASC = "Name(A-Z)";

@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import cx from 'classnames';
+import PropTypes from "prop-types";
+import cx from "classnames";
 
 const RowSizeDropdown = ({className, rowsSizes, setPageSize}) => {
   return(
@@ -28,6 +28,12 @@ RowSizeDropdown.propTypes = {
   className: PropTypes.string,
   rowsSizes: PropTypes.array,
   setPageSize: PropTypes.func
+}
+
+RowSizeDropdown.defaultProps = {
+  className: "",
+  rowsSizes: null,
+  setPageSize: () => {}
 }
 
 export default RowSizeDropdown;

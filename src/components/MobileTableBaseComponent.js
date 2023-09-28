@@ -1,5 +1,5 @@
-import cx from 'classnames';
-import PropTypes from 'prop-types';
+import cx from "classnames";
+import PropTypes from "prop-types";
 
 const MobileTableBaseComponent = ({className, data, columns, isDark}) => {
   if(!data) {
@@ -37,6 +37,13 @@ MobileTableBaseComponent.propTypes = {
   data: PropTypes.array,
   columns: PropTypes.array,
   isDark: PropTypes.bool
+}
+
+MobileTableBaseComponent.defaultProps = {
+  className: "",
+  data: null,
+  columns: null,
+  isDark: false
 }
   
 export default MobileTableBaseComponent;

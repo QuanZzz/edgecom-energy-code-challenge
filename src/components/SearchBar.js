@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const SearchBar = ({searchContent, setSearchContent}) => {
+const SearchBar = ({className, searchContent, setSearchContent}) => {
   return (
-    <div className="flex items-center py-1">
+    <div className={cx("flex items-center py-1", className)}>
       <label className='pr-1' htmlFor="searchBar">Search: </label>
       <input 
         className="border w-60 pl-1 bg-transparent" 
@@ -15,6 +16,7 @@ const SearchBar = ({searchContent, setSearchContent}) => {
 }
 
 SearchBar.propTypes = {
+  className: PropTypes.string,
   searchContent: PropTypes.string,
   setSearchContent: PropTypes.func
 }

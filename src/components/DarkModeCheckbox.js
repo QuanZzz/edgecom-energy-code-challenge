@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const DarkModeCheckbox = ({isDark, setIsDark}) => {
+const DarkModeCheckbox = ({className, isDark, setIsDark}) => {
   return (
-    <div className="flex items-center">
+    <div className={cx("flex items-center", className)}>
       <input 
         type="checkbox" 
         id="darkMode" 
@@ -15,6 +16,7 @@ const DarkModeCheckbox = ({isDark, setIsDark}) => {
 }
 
 DarkModeCheckbox.propTypes = {
+  className: PropTypes.string,
   isDark: PropTypes.bool,
   setIsDark: PropTypes.func
 }

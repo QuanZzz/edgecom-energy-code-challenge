@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import DarkModeCheckbox from './DarkModeCheckbox';
 
-const TableHeader = ({label, isDark, setIsDark}) => {
+const TableHeader = ({className, label, isDark, setIsDark}) => {
   return (
-    <div className="px-3 flex w-full items-center justify-between">
+    <div className={cx("px-3 flex w-full items-center justify-between",className)}>
       <div className="text-xxl font-brand font-bold">{label}</div>
       <DarkModeCheckbox isDark={isDark} setIsDark={setIsDark} />
     </div>
@@ -11,6 +12,7 @@ const TableHeader = ({label, isDark, setIsDark}) => {
 }
 
 TableHeader.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string,
   isDark: PropTypes.bool,
   setIsDark: PropTypes.func

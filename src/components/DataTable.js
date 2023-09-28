@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import cx from 'classnames';
 import { useEffect, useMemo, useState } from "react";
 import Pagination from "../components/pagination/Pagination";
 import MobileTableBaseComponent from "../components/MobileTableBaseComponent";
@@ -58,7 +58,7 @@ const DataTable = ({
   }, [currentTableData, searchContent]);
 
   return(
-    <div className={classnames("w-full flex flex-col items-center text-xxl p-4", {
+    <div className={cx("w-full flex flex-col items-center text-xxl p-4", {
       "bg-black text-white": isDark,
       className
     })}>

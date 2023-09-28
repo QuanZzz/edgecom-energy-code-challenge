@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const RowSizeDropdown = ({rowsSizes, setPageSize}) => {
+const RowSizeDropdown = ({className, rowsSizes, setPageSize}) => {
   return(
-    <div className="flex py-1">
+    <div className={cx("flex py-1", className)}>
       <label htmlFor="rowSizesDropdown">
         Rows number:
       </label>
@@ -24,6 +25,7 @@ const RowSizeDropdown = ({rowsSizes, setPageSize}) => {
 }
 
 RowSizeDropdown.propTypes = {
+  className: PropTypes.string,
   rowsSizes: PropTypes.array,
   setPageSize: PropTypes.func
 }

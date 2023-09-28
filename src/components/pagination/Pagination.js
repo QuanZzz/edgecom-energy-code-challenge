@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import cx from 'classnames';
 import { usePagination } from "../../utils/hooks/usePagination";
 import { DOTS } from '../../utils/constants/constants';
 import './pagination.scss';
@@ -36,10 +36,10 @@ const Pagination = ({
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul
-      className={classnames('pagination-container', { [className]: className })}
+      className={cx('pagination-container', className)}
     >
       <li
-        className={classnames('pagination-item', {
+        className={cx('pagination-item', {
           disabled: currentPage === 1,
           "bg-white": isDark
         })}
@@ -56,7 +56,7 @@ const Pagination = ({
         return (
           <li
             key={pageNumber}
-            className={classnames('pagination-item', {
+            className={cx('pagination-item', {
               selected: pageNumber === currentPage,
               "text-white": isDark
             })}
@@ -67,13 +67,13 @@ const Pagination = ({
         );
       })}
       <li
-        className={classnames('pagination-item', {
+        className={cx('pagination-item', {
           disabled: currentPage === lastPage,
           "bg-white hover:bg-white": isDark
         })}
         onClick={onNext}
       >
-        <div className={classnames("arrow right", {
+        <div className={cx("arrow right", {
         })} />
       </li>
     </ul>

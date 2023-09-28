@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 
-const SortDropdown = ({setSortBy, columns}) => {
+const SortDropdown = ({className, setSortBy, columns}) => {
   return(
-    <div className="flex sm:hidden py-1">
+    <div className={cx("flex sm:hidden py-1", className)}>
       <label htmlFor="sortByDropdown">
         Sort by:
       </label>
@@ -24,6 +25,7 @@ const SortDropdown = ({setSortBy, columns}) => {
 }
 
 SortDropdown.propTypes = {
+  className: PropTypes.string,
   setSortBy: PropTypes.func,
   columns: PropTypes.array
 }

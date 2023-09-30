@@ -10,7 +10,7 @@ const DarkModeCheckbox = ({className, isDark, setIsDark}) => {
         checked={isDark} 
         onChange={() => setIsDark(!isDark)} 
       />
-      <label className="pl-1">Dark Mode</label>
+      <label className="pl-1" htmlFor="darkMode">Dark Mode</label>
     </div>
   );
 }

@@ -1,7 +1,15 @@
 import PropTypes from "prop-types";
 import cx from "classnames";
 
-const DataTableBaseComponent = ({ className, data, columns, setSortBy, isDark}) => {
+const DataTableBaseComponent = ({ 
+  className, 
+  data, 
+  columns, 
+  setSortBy,
+  alphaSort,
+  setAlphaSort, 
+  isDark
+}) => {
   if(!data) {
     return;
   }
@@ -16,7 +24,12 @@ const DataTableBaseComponent = ({ className, data, columns, setSortBy, isDark}) 
               className={cx("p-3 font-bold text-base", column.columnClassname)}
             >
               <span className="inline-flex items-center flex-nowrap">
-                <button onClick={() => setSortBy(column.key)}>
+                <button 
+                  onClick={() => {
+                    setSortBy(column.key);
+                    setAlphaSort(!alphaSort);
+                  }}
+                >
                   <span className="break-all line-clamp-1">{column.header}</span>
                 </button>
               </span>
@@ -54,6 +67,8 @@ DataTableBaseComponent.propTypes = {
   data: PropTypes.array,
   columns: PropTypes.array,
   setSortBy: PropTypes.func,
+  alphaSort: PropTypes.bool,
+  setAlphaSort: PropTypes.func,
   isDark: PropTypes.bool
 }
 
@@ -62,6 +77,8 @@ DataTableBaseComponent.defalutProps = {
   data: null,
   columns: null,
   setSortBy: () => {},
+  alphaSort: true,
+  setAlphaSort: () => {},
   isDark: false
 }
 

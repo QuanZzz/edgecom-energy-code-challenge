@@ -6,6 +6,7 @@ const SearchBar = ({className, searchContent, setSearchContent}) => {
     <div className={cx("flex items-center py-1", className)}>
       <label className="pr-1" htmlFor="searchBar">Search: </label>
       <input 
+        id="searchBar"
         className="border w-60 pl-1 bg-transparent" 
         type="search" 
         placeholder="Search for..." 

@@ -20,6 +20,7 @@ const DataTable = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize, setPageSize] = useState(rows);
   const [sortBy, setSortBy] = useState(null);
+  const [alphaSort, setAlphaSort] = useState(true);
   const [searchContent, setSearchContent] = useState("");
   const [displayedContent, setDisplayedContent] = useState([]);
   const [isDark, setIsDark] = useState(false);
@@ -35,11 +36,19 @@ const DataTable = ({
       return;
     }
 
-    let currentPageUsers = [...displayedContent];
-    currentPageUsers.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
+    const currentPageUsers = [...displayedContent];
+    if(alphaSort){
+      currentPageUsers.sort((a, b) =>
+        a[sortBy].localeCompare(b[sortBy])
+      );
+    }else {
+      currentPageUsers.sort((a, b) =>
+        b[sortBy].localeCompare(a[sortBy])
+      );
+    }
 
     setDisplayedContent(currentPageUsers);
-  }, [currentTableData, sortBy]);
+  }, [alphaSort, sortBy]);
 
   useEffect(() => {
     if(!searchContent.length) {
@@ -83,6 +92,8 @@ const DataTable = ({
         data={displayedContent}
         columns={columns}
         setSortBy={setSortBy}
+        alphaSort={alphaSort}
+        setAlphaSort={setAlphaSort}
         isDark={isDark}
       />
       

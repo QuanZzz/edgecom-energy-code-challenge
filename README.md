@@ -1,4 +1,4 @@
-# Edgecom Energy Data Table Code Challenge
+# Edgecom Energy Data Table Code Challenge (Using JavaScript)
 
 ## Project Setup
 
@@ -11,4 +11,3 @@ View the app locally at `http://localhost:3000/`.
 This project needs Node Version `18.17.0`
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-# data-table-typescript
